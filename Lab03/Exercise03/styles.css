@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  background-color: black;
+  display: flex;
+}
+#logoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-element {
+  background-color: #b30e0e;
+  height: 13.5rem;
+  width: 2.6rem;
+  margin: -0.1rem;
+}
+.logo-element:nth-child(2) {
+  position: relative;
+  transform: skewX(19.4deg);
+  background-color: red;
+  box-shadow: 0 0.5em 0.7em black, 0 -0.5em 0.7em black;
+}
+#netflix {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-family: "Consolas";
+  font-weight: 700;
+  text-transform: uppercase;
+  color: red;
+}
