@@ -1,0 +1,42 @@
+#gameContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#cellsContainer {
+  display: grid;
+  grid-template-columns: repeat(25, auto);
+  box-shadow: 0 1rem 2rem black;
+}
+.cell {
+  width: 1.5vw;
+  height: 1.5vw;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+#resetBtn {
+  margin: 2rem;
+  width: 4rem;
+  height: 3rem;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family: "Verdana";
+  background-color: rgb(43, 0, 0);
+  color: silver;
+  box-shadow: 0 0.3rem 0.5rem black;
+}
+#resetBtn:hover {
+  transform: translateY(-0.1rem);
+  color: white;
+}
+#resetBtn:active {
+  transform: scale(0.95, 0.95);
+}
+#gameName {
+  font-size: 3rem;
+  font-family: Consolas;
+}
