@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Przychodnia</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-row">
+        <div class="left-item">
+          <div class="left-item-header">Nasza misja</div>
+          <div class="left-item-content">
+            Witamy w Przychodni Marzeń. Tylko u nas zostaniesz dokładnie
+            przebadany i tylko u nas nikogo nie odsyłamy bez postawienia
+            dagnozy.
+          </div>
+        </div>
+        <div class="left-item">
+          <div class="left-item-header">Twoje badania</div>
+          <div class="left-item-content">
+            <ul>
+              <li>USG</li>
+              <li>RTG</li>
+              <li>DVD</li>
+            </ul>
+          </div>
+        </div>
+        <div id="form-item" class="left-item">
+          <div class="left-item-header">Umów wizytę</div>
+          <form action="#" method="POST">
+            <fieldset class="main-form">
+              <legend>Dane wizyty</legend>
+              <div>
+                <label for="doctor">Wybierz lekarza:</label>
+                <select id="doctor" name="doctor">
+                  <option style="background-color: white" value="dr_smith">
+                    Dr Smith
+                  </option>
+                  <option style="background-color: white" value="dr_jones">
+                    Dr Jones
+                  </option>
+                  <option
+                    style="background-color: white"
+                    value="dr_doe"
+                    selected
+                  >
+                    Dr Doe
+                  </option>
+                  <option style="background-color: white" value="dr_doe">
+                    Dr Adam
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="date">Wybierz datę:</label>
+                <input type="date" id="date" name="date" value="2028-05-10" />
+              </div>
+              <div>
+                <label for="number">Twój numer:</label>
+                <input
+                  type="text"
+                  id="number"
+                  name="number"
+                  class="number-input"
+                  placeholder="Wprowadź 9-cyfrowy numer"
+                  pattern="[0-9]{9}"
+                />
+              </div>
+              <div>
+                <label for="reminder">Przypomnienie SMS:</label>
+                <input checked type="checkbox" id="reminder" name="reminder" />
+              </div>
+              <div>
+                <input
+                  id="form-button"
+                  type="submit"
+                  value="Sprawdź dostępność"
+                />
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div id="right-row" class="main-row">
+        <div class="right-header">Twoi lekarze</div>
+        <figure class="doctor-item">
+          <img src="Images/doctor01.jpg" alt="doctor" />
+          <figcaption>
+            Wyleczę ból! <br />
+            <span>&mdash; prof. Harold Kowalski</span>
+          </figcaption>
+        </figure>
+        <figure class="doctor-item">
+          <img src="Images/doctor02.jpg" alt="doctor" />
+          <figcaption>
+            To rak! <br />
+            <span>&mdash; prof. Grzegorz Dom</span>
+          </figcaption>
+        </figure>
+        <figure class="doctor-item">
+          <img src="Images/doctor03.jpg" alt="doctor" />
+          <figcaption>
+            To koniec! <br />
+            <span>&mdash; prof. Stanisław Tur</span>
+          </figcaption>
+        </figure>
+        <figure class="doctor-item">
+          <img src="Images/doctor04.jpg" alt="doctor" />
+          <figcaption>
+            Kim on jest bez swoich nóg? <br />
+            <span>&mdash; prof. Mateusz Żmigrodzki</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </body>
+</html>
