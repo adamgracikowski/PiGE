@@ -1,0 +1,45 @@
+#logoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#myCanvas {
+  border-radius: 25%;
+  box-shadow: 0 1rem 1rem black;
+  cursor: pointer;
+}
+
+h1 {
+  font-family: "Arial";
+  font-size: 5rem;
+  font-weight: 600;
+  margin: 1rem;
+}
+
+#tube {
+  display: inline-block;
+  padding: 0.5rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.4em;
+  transition: all 0.5s;
+}
+
+.oldStyle {
+  display: inline-block;
+  padding: 0.5rem;
+  border: 0.1rem solid red;
+  background-color: red;
+  border-radius: 0.4em;
+  color: white;
+  box-shadow: 0 1rem 1rem black;
+}
+
+.clicked {
+  transform: scale(0.95, 0.95);
+}
