@@ -1,0 +1,49 @@
+html {
+  font-size: 1.5vw;
+  background-color: whitesmoke;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+}
+
+.ring {
+  width: 10rem;
+  height: 10rem;
+  margin: -2rem;
+  border-top: 0.25rem solid;
+  border-left: 0.25rem solid;
+  border-radius: 50%;
+  animation: load 4s linear infinite;
+}
+
+.ring:nth-child(1) {
+  border-color: #f72585;
+}
+
+.ring:nth-child(2) {
+  border-color: #7209b7;
+  position: absolute;
+  left: 3rem;
+  top: -5rem;
+  animation-delay: -1s;
+}
+
+.ring:nth-child(3) {
+  border-color: #3a0ca3;
+  animation-delay: -2s;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
