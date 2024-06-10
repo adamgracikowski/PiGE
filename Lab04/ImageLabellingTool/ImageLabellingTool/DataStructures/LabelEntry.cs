@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace AILabelTool
+namespace ImageLabellingTool
 {
     public class LabelEntry
     {
