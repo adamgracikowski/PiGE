@@ -1,0 +1,268 @@
+﻿<Window
+    x:Class="ImageLabellingTool.LabellingWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ImageLabellingTool"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AI Label Master 3000 - Labeling Step"
+    Width="1400"
+    Height="800"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ControlTemplate x:Key="DirectoryValidationTemplate">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <Grid Width="10" Height="10">
+                        <Ellipse
+                            Width="10"
+                            Height="10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Fill="{StaticResource ValidationColor}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="6"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="X"
+                            TextAlignment="Center"
+                            ToolTip="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                    </Grid>
+                    <TextBlock
+                        Margin="3,0,0,0"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource ValidationColor}"
+                        Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                </StackPanel>
+                <AdornedElementPlaceholder Name="ErrorAdorner" />
+            </DockPanel>
+        </ControlTemplate>
+
+        <Style x:Key="ValidationErrorStyle" TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource DirectoryValidationTemplate}" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ContextMenu x:Key="LabellingContextMenu">
+            <MenuItem Click="EditMenuItemClick" Header="Edit" />
+            <MenuItem Click="RemoveMenuItemClick" Header="Remove" />
+        </ContextMenu>
+
+        <DataTemplate x:Key="LabelTemplate">
+            <Border
+                Background="{Binding Path=Label.Color}"
+                BorderBrush="{Binding Path=Label.Color}"
+                CornerRadius="5">
+                <TextBox
+                    x:Name="LabellingTextBox"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Focusable="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Converter={StaticResource ReverseBoolConverter}}"
+                    IsHitTestVisible="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Converter={StaticResource ReverseBoolConverter}}"
+                    IsReadOnly="True"
+                    KeyDown="LabellingTextBoxKeyDown"
+                    LostFocus="LabellingTextBoxLostFocus"
+                    Text="{Binding Path=Label.Name}"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <Border.ContextMenu>
+                    <Binding Source="{StaticResource LabellingContextMenu}" />
+                </Border.ContextMenu>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="800" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!--  file items list view  -->
+        <ListView
+            Name="FileItemsListView"
+            Margin="0,10,0,0"
+            SelectionChanged="FileItemsListViewSelectionChanged">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        Width="30"
+                        Margin="10"
+                        Orientation="Vertical">
+                        <Image
+                            Width="30"
+                            Height="30"
+                            Source="{Binding Path=FileItem.Image}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding ViewportWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListView>
+
+
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <!--  labels settings  -->
+            <GroupBox Grid.Row="0" Header="Labels Settings">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBox
+                        x:Name="NewLabelEntryTextBox"
+                        VerticalContentAlignment="Center"
+                        Style="{StaticResource ControlStyle}" />
+                    <Button
+                        x:Name="AddButton"
+                        Grid.Column="1"
+                        Click="AddButtonClick"
+                        Content="Add Label"
+                        Style="{StaticResource ControlStyle}" />
+                    <ListView
+                        Name="LabelsListView"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        BorderThickness="0"
+                        ItemTemplate="{StaticResource LabelTemplate}"
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding ViewportWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListView>
+                </Grid>
+            </GroupBox>
+
+            <!--  export settings  -->
+            <GroupBox Grid.Row="1" Header="Export Settings">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="3,0"
+                        VerticalAlignment="Center"
+                        Text="Export:" />
+                    <Button
+                        x:Name="ChooseFolderButton"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Click="ChooseFolderButtonClick"
+                        Content="Choose folder"
+                        Style="{StaticResource ControlStyle}" />
+                    <TextBox
+                        Name="ExportTextbox"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Height="20"
+                        Margin="10"
+                        VerticalContentAlignment="Center"
+                        Validation.ErrorTemplate="{StaticResource DirectoryValidationTemplate}">
+                        <TextBox.Text>
+                            <Binding
+                                Mode="TwoWay"
+                                Path="DirectoryPath"
+                                UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:DirectoryExistsValidationRule ValidatesOnTargetUpdated="True" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <!--  canvas  -->
+        <Canvas
+            Name="MainCanvas"
+            Grid.Column="1"
+            MouseDown="MainCanvasMouseDown"
+            MouseMove="MainCanvasMouseMove"
+            MouseUp="MainCanvasMouseUp">
+            <Panel.Background>
+                <ImageBrush ImageSource="{Binding ElementName=FileItemsListView, Path=SelectedItem, Converter={StaticResource FileItemLabellingToImageConverter}}" Stretch="Uniform" />
+            </Panel.Background>
+        </Canvas>
+
+        <!--  finish button  -->
+        <Button
+            Grid.Row="1"
+            Grid.Column="3"
+            Margin="4"
+            Click="FinishLabellingClick"
+            Content="Finish Labeling"
+            IsEnabled="{Binding ElementName=ExportTextbox, Path=(Validation.HasError), Converter={StaticResource ReverseBoolConverter}}"
+            Style="{StaticResource ButtonStyle}" />
+
+        <!--  previous & next buttons  -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="NextImageButton"
+                Grid.Column="1"
+                Click="NextImageButtonClick"
+                Content="Next Image"
+                Style="{StaticResource ButtonStyle}">
+                <UIElement.IsEnabled>
+                    <MultiBinding Converter="{StaticResource NextPreviousConverter}" ConverterParameter="Next">
+                        <Binding ElementName="FileItemsListView" Path="SelectedIndex" />
+                        <Binding ElementName="FileItemsListView" Path="Items.Count" />
+                    </MultiBinding>
+                </UIElement.IsEnabled>
+            </Button>
+            <Button
+                x:Name="PreviousImageButton"
+                Grid.Column="0"
+                Click="PreviousImageButtonClick"
+                Content="Previous Image"
+                Style="{StaticResource ButtonStyle}">
+                <UIElement.IsEnabled>
+                    <MultiBinding Converter="{StaticResource NextPreviousConverter}" ConverterParameter="Previous">
+                        <Binding ElementName="FileItemsListView" Path="SelectedIndex" />
+                        <Binding ElementName="FileItemsListView" Path="Items.Count" />
+                    </MultiBinding>
+                </UIElement.IsEnabled>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
