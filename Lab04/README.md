@@ -15,11 +15,11 @@ The first window contains the following elements:
 - A button to start the labelling process and open the second (dialog) window.
 
 <p align="center">
-  <img src="Images/readme02.PNG" alt="labelling-window" />
+  <img width="80%" src="Images/readme02.PNG" alt="labelling-window" />
 </p>
 
 <p align="center">
-  <img src="Images/readme03.PNG" alt="labelling-window" />
+  <img width="80%" src="Images/readme03.PNG" alt="labelling-window" />
 </p>
 
 The dialog window contains the following elements:
@@ -31,13 +31,13 @@ The dialog window contains the following elements:
 - Export settings group box, allowing the user to choose where to export the labels (into separate folders).
 
 <p align="center">
-  <img src="Images/readme04.PNG" alt="labelling-window" />
+  <img width="80%" src="Images/readme04.PNG" alt="labelling-window" />
 </p>
 
 <p align="center">
-  <img src="Images/readme05.PNG" alt="labelling-window" />
+  <img width="80%" src="Images/readme05.PNG" alt="labelling-window" />
 </p>
 
 <p align="center">
-  <img src="Images/readme06.PNG" alt="labelling-window" />
+  <img width="80%" src="Images/readme06.PNG" alt="labelling-window" />
 </p>
