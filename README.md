@@ -1,15 +1,28 @@
-# Programming in Graphical Environment:
+# Programowanie w Środowisku Graficznym:
 
-This repository contains a collection of projects and exercises completed as part of the course "Programming in a Graphical Environment" during the summer semester of the 2023-2024 academic year.
+To repozytorium jest zbiorem projektów i ćwiczeń realizowanych w ramach laboratoriów z przedmiotu "_Programowanie w Środowisku Graficznym_" podczas letniego semestru roku akademickiego 2023-2024.
 
-The first part of the semester was dedicated to [Windows API (WinAPI)](https://en.wikipedia.org/wiki/Windows_API) technology. Topics covered included various methods of creating windows, handling keyboard and mouse events, and the basics of using GDI for drawing and creating simple 2D graphics.
+Pierwsza część semestru była poświęcona wprowadzeniu do technologii [Windows API (WinAPI)](https://en.wikipedia.org/wiki/Windows_API). Dotyczyła ona m.in. tworzenia okien graficznych, obsługi zdarzeń klawiatury i myszy, a także rysowania prostej grafiki 2D przy pomocy GDI.
 
-<!-- The outcomes of the work with WinAPI technology are collected in the Lab01 folder.
-The second part of the semester focused on Windows Forms technology.
--->
+Kolejna część semestru skupiała się na wprowadzeniu do technologii [Windows Forms](https://en.wikipedia.org/wiki/Windows_Forms) oraz programowaniu sterowanemu zdarzeniami (_event-driven programming_).
 
-The next part of the course concentrated on acquiring basic skills in creating [HTML](https://en.wikipedia.org/wiki/HTML) documents and styling them using [CSS](https://en.wikipedia.org/wiki/CSS). The outcomes of the work with HTML and CSS are collected in the [Lab03](https://github.com/adamgracikowski/PiGE/tree/main/Lab03) folder.
+Następna część kursu została poświęcona nabyciu podstawowych umiejętności w zakresie tworzenia dokumentów [HTML](https://en.wikipedia.org/wiki/HTML) oraz stylizowania ich przy pomocy [CSS](https://en.wikipedia.org/wiki/CSS).
 
-The remaining part of the semester was dedicated to [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation) technology and its advanced data binding capabilities.
+Pozostała część kursu obejmowała technologię [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation) oraz jej zaawansowanych możliwości w zakresie wiązania danych (_data binding_).
 
-The outcomes of the work with WPF technology are collected in the [Lab04](https://github.com/adamgracikowski/PiGE/tree/main/Lab03) folder.
+Zawartość repozytorium:
+
+- Lab01: WinAPI (_TODO_)
+- Lab02: Windows Forms (_TODO_)
+- Lab03: HTML & CSS
+  - Exercise01: [Catty Inbox](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise01)
+  - Exercise02: [Przychodnia Marzeń](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise02)
+  - Exercise03: [Netflix Logo](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise03)
+  - Exercise04: [Loading Rings](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise04)
+  - Exercise05: [YouTube Logo](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise05)
+  - Exercise06: [Random Color Palette](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise06)
+  - Exercise07: [LearnQuick](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise07)
+  - Exercise08: [Price Tiers](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise08)
+  - Exercise09: [Shipping Lists](https://github.com/adamgracikowski/PiGE/tree/main/Lab03/Exercise09)
+- Lab04: WPF
+  - [Image Labelling Tool](https://github.com/adamgracikowski/PiGE/tree/main/Lab04/ImageLabellingTool)
